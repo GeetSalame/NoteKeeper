@@ -6,8 +6,7 @@ function Homepage() {
 
 
   const openNote = () => {
-    document.getElementById("ReadNote").style.display = "flex";
-    console.log("clicke")
+    // document.getElementById("ReadNote").style.display = "flex";
   }
 
   const closeNote = () => {

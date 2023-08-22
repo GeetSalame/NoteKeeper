@@ -1,10 +1,16 @@
 import React from 'react';
 import './notecard.css';
+import { toast } from 'react-toastify';
 
 function Notecard(params) {
+
+    const notifyDelete = () => {
+        toast.success("Note Deleted");
+    }
+
     return (
         <div id='Notecard'>
-            <div style={{display:"flex"}}>
+            <div style={{ display: "flex" }}>
                 <div>
                     <h1 id="noteTitle">Title</h1>
                     <p id="noteTagline">Tagline</p>
@@ -19,7 +25,7 @@ function Notecard(params) {
                 <img src="https://cdn-icons-png.flaticon.com/512/686/686094.png" alt="color" className='NoteOptionsIcons' />
                 <img src="https://cdn-icons-png.flaticon.com/512/2985/2985043.png" alt="edit" className='NoteOptionsIcons' />
                 <img src="https://cdn-icons-png.flaticon.com/512/7693/7693316.png" alt="archives" className='NoteOptionsIcons' />
-                <img src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png" alt="delete" className='NoteOptionsIcons' />
+                <img src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png" onClick={notifyDelete} alt="delete" className='NoteOptionsIcons' />
             </div>
         </div>
     )

@@ -15,6 +15,7 @@
   --theme-pri-light : #FFE082;
   --nav-height : 60px;
   --nav-padding-LR : 30px;
+  --sidebar-width : 85px;
 }
 
 body{
@@ -24,6 +25,7 @@ body{
 #logo{
   display: flex;
   gap: 5px;
+  align-items: center;
 }
 
 .icon{

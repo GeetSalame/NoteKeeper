@@ -1,0 +1,68 @@
+:root{
+    --notecard-width : 400px;
+    --notecard-height : 200px;
+}
+
+#Notecard>* {
+    /* border: 2px solid red; */
+}
+
+#Notecard {
+    /* border: 2px solid red; */
+    width: var(--notecard-width);
+    height: var(--notecard-height);
+    margin: auto;
+    padding: 10px 20px;
+
+    background: white;
+    box-shadow: 0 0 10px rgba(192, 192, 192, 0.5);
+    border-radius: 5px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* align-items: flex-start; */
+}
+
+#Notecard:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 10px rgba(192, 192, 192, 0.7);
+}
+
+#Notecard:hover #noteOptions{
+    display: flex;
+}
+
+#Notecard>h1 {
+    font-size: x-large;
+}
+
+.NoteOptionsIcons{
+    /* border: 2px solid red; */
+    width: 45px;
+    height: 45px;
+    padding: 10px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.NoteOptionsIcons:hover{
+    background: rgba(192, 192, 192, 0.2);
+}
+
+#notePinsec{
+    margin-left: auto;
+}
+
+.notePin{
+    transform: rotate(-45deg);
+    height: 20px;
+}
+
+#noteOptions{
+    display: none;
+    margin: 0 auto;
+    gap: 20px;
+}

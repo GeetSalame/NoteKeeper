@@ -53,6 +53,7 @@
 #searchInp {
     border: none;
     background: transparent;
+    width: 100%;
 }
 
 #searchInp:focus {

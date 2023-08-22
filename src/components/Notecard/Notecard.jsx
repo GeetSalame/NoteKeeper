@@ -1,8 +1,10 @@
 import React from 'react';
 import './notecard.css';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 function Notecard(params) {
+    const navigate = useNavigate();
 
     const notifyDelete = () => {
         toast.success("Note Deleted");
@@ -11,13 +13,13 @@ function Notecard(params) {
     return (
         <div id='Notecard'>
             <div style={{ display: "flex" }}>
-                <div>
-                    <h1 id="noteTitle">Title</h1>
-                    <p id="noteTagline">Tagline</p>
+                <div id='noteContent' onClick={()=>{navigate("/read")}}>
+                    <h1 id="noteTitle">{params.title}</h1>
+                    <p id="noteTagline">{params.tagline}</p>
                     {/* <p id="noteBody">Body</p> */}
                 </div>
                 <div id="notePinsec" className='NoteOptionsIcons'>
-                    {params.pinned === "true" ? <img src="https://cdn-icons-png.flaticon.com/512/2951/2951513.png" alt="pinned" className='notePin' /> : <img src="https://cdn-icons-png.flaticon.com/512/2951/2951412.png" alt="notPinned" className='notePin' />}
+                    {params.isPinned === "true" ? <img src="https://cdn-icons-png.flaticon.com/512/2951/2951513.png" alt="pinned" className='notePin' /> : <img src="https://cdn-icons-png.flaticon.com/512/2951/2951412.png" alt="notPinned" className='notePin' />}
                     {/* {params.pinned === "true" ? <img src="https://cdn-icons-png.flaticon.com/512/73/73169.png" alt="pinned" className='notePin' /> : <img src="https://cdn-icons-png.flaticon.com/512/1274/1274860.png" alt="notPinned" className='notePin' />} */}
                 </div>
             </div>

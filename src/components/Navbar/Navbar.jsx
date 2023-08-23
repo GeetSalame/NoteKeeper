@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom';
 function Navbar() {
     const navigate = useNavigate();
 
-    const notifyReload = () => {
-        toast("Reloded");
+    const reloadPage = () => {
+        window.location.reload();
     }
 
     return (
@@ -23,7 +23,7 @@ function Navbar() {
                 <img src="https://cdn-icons-png.flaticon.com/512/3031/3031293.png" alt="search" className='icon' style={{ opacity: "0.5" }} id='searchIcon' />
                 <input type="text" placeholder='Search' id='searchInp' />
             </div>
-            <a title='Refresh'><img src="https://cdn-icons-png.flaticon.com/512/93/93641.png" onClick={notifyReload} alt="reload" className='icon' /></a>
+            <a title='Refresh'><img src="https://cdn-icons-png.flaticon.com/512/93/93641.png" onClick={reloadPage} alt="reload" className='icon' /></a>
         </div>
     )
 }

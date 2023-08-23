@@ -10,8 +10,10 @@ function Notecard({ noteObj }) {
     const deleteNote = async (noteId) => {
         try {
             await noteCRUDservices.deleteNote(noteId);
-            navigate("/");
-            toast.success("Note Deleted");
+            toast.success("Note Deleted...", { autoClose: 1000 });
+            setTimeout(() => {
+                window.location.reload();
+            }, 1500);
         } catch (error) {
             toast.error(error);
         }
@@ -35,7 +37,7 @@ function Notecard({ noteObj }) {
                 <a title='Note Color'><img src="https://cdn-icons-png.flaticon.com/512/686/686094.png" alt="color" className='NoteOptionsIcons' /></a>
                 <a title='Edit' onClick={() => { navigate("/update") }}><img src="https://cdn-icons-png.flaticon.com/512/2985/2985043.png" alt="edit" className='NoteOptionsIcons' /></a>
                 <a title='Archive'><img src="https://cdn-icons-png.flaticon.com/512/7693/7693316.png" alt="archives" className='NoteOptionsIcons' /></a>
-                <a title='Delete'><img src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png" onClick={()=>deleteNote(noteObj.id)} alt="delete" className='NoteOptionsIcons' /></a>
+                <a title='Delete'><img src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png" onClick={() => deleteNote(noteObj.id)} alt="delete" className='NoteOptionsIcons' /></a>
             </div>
         </div>
     )

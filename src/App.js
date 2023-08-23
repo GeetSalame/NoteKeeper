@@ -14,7 +14,7 @@ function App() {
       <Navbar />
       <Menubar />
       <Routes>
-        <Route path='/' element={<Homepage />} />
+        <Route path='/' element={<Homepage itemsPerPage={6} />} />
         <Route path='/read' element={<Readnote />} />
       </Routes>
       <ToastContainer />

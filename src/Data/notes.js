@@ -16,7 +16,7 @@ let notes = [
         title : "Bonafide Bonafide ka kam krna hai ka kam krna hai",
         tagline : "hostel k liye bonafide lagta isliye",
         body : "body",
-        isPinned : "false"
+        isPinned : "true"
     },
     {
         title : "Title 4",
@@ -45,6 +45,30 @@ let notes = [
     },
     {
         title : "Title 2",
+        tagline : "tagline",
+        body : "body",
+        isPinned : "false"
+    },
+    {
+        title : "Title 3",
+        tagline : "tagline",
+        body : "body",
+        isPinned : "false"
+    },
+    {
+        title : "Title 4",
+        tagline : "tagline",
+        body : "body",
+        isPinned : "false"
+    },
+    {
+        title : "Title 5",
+        tagline : "tagline",
+        body : "body",
+        isPinned : "false"
+    },
+    {
+        title : "Title 6",
         tagline : "tagline",
         body : "body",
         isPinned : "false"

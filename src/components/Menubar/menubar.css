@@ -22,11 +22,7 @@
     box-shadow: 5px 0px 10px rgba(192, 192, 192, 0.2);
 }
 
-#Menubar>*{
-    /* border:  2px solid red; */
-}
-
-.menubarIcons{
+.menubarIcons {
     height: 50px;
     width: 50px;
     display: flex;
@@ -36,9 +32,13 @@
     border-radius: 100px;
 }
 
-.menubarIcons:hover{
-    background: rgba(192, 192, 192, 0.2);
+.menubarIcons:hover {
+    background: rgba(255, 206, 161, 0.6);
 }
+
+/* .menubarIcons>a {
+    margin: auto;
+} */
 
 .menubarIcons>img {
     height: 25px;

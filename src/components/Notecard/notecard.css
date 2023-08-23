@@ -1,9 +1,10 @@
-:root{
-    --notecard-width : 400px;
-    --notecard-height : 200px;
+:root {
+    --notecard-width: 400px;
+    --notecard-height: 200px;
 }
 
-#Notecard>*, #Notecard>*>* {
+#Notecard>*,
+#Notecard>*>* {
     /* border: 2px solid red; */
 }
 
@@ -14,7 +15,7 @@
     margin: auto;
     padding: 10px 20px;
 
-    background: white;
+    background: rgba(255, 255, 255, .9);
     box-shadow: 0 0 10px rgba(192, 192, 192, 0.5);
     border-radius: 5px;
     
@@ -25,28 +26,30 @@
 }
 
 #Notecard:hover {
+    background: rgba(255, 255, 255, 1);
     transform: scale(1.01);
-    box-shadow: 0 0 10px rgba(192, 192, 192, 0.7);
+    /* box-shadow: 0 0 10px rgb(192, 192, 192); */
+    box-shadow: 0 0 10px #ffb172a1;
 }
 
-#Notecard:hover #noteOptions{
+#Notecard:hover #noteOptions {
     display: flex;
 }
 
-#noteContent{
+#noteContent {
     cursor: pointer;
     width: 100%;
 }
 
-#noteTitle{
+#noteTitle {
     font-size: x-large;
 }
 
-#noteTagline{
+#noteTagline {
     color: grey;
 }
 
-.NoteOptionsIcons{
+.NoteOptionsIcons {
     /* border: 2px solid red; */
     width: 45px;
     height: 45px;
@@ -57,21 +60,27 @@
     align-items: center;
 }
 
-.NoteOptionsIcons:hover{
-    background: rgba(192, 192, 192, 0.2);
-    cursor: pointer;
+.NoteOptionsIcons:hover {
+    background: rgba(255, 206, 161, 0.6);
 }
 
-#notePinsec{
+#notePinsec {
     margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.notePin{
+#notePinsec>a {
+    margin: auto;
+}
+
+.notePin {
     transform: rotate(-45deg);
     height: 20px;
 }
 
-#noteOptions{
+#noteOptions {
     display: none;
     margin: 0 auto;
     gap: 20px;

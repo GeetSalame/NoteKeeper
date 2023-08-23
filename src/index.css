@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -10,28 +10,32 @@
   font-family: 'Poppins', sans-serif;
 }
 
-:root{
-  --theme-pri : #FFA000;
-  --theme-pri-light : #FFE082;
-  --nav-height : 60px;
-  --nav-padding-LR : 30px;
-  --sidebar-width : 85px;
+:root {
+  --theme-pri: #FFA000;
+  --theme-pri-light: #FFE082;
+  --nav-height: 60px;
+  --nav-padding-LR: 30px;
+  --sidebar-width: 85px;
+
+  --bg-theme-grad : linear-gradient(180deg, #fedec3b9, #fedec3);
+  --bg-blue-faint : #ecefff82;
 }
 
-body{
+body {
   /* background: #ECEFFF; */
-  background: #fff5ec;
+  background: var(--bg-theme-grad);
 }
 
-#logo{
+#logo {
   display: flex;
   gap: 5px;
   align-items: center;
 }
 
-.icon{
+.icon {
   height: 20px;
 }
-.icon:hover{
+
+.icon:hover {
   transform: scale(1.1);
 }

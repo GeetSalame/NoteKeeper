@@ -3,8 +3,11 @@ import './homepage.css';
 import Notecard from '../Notecard/Notecard';
 import notes from '../../Data/notes';
 import ReactPaginate from 'react-paginate';
+import { useNavigate } from 'react-router-dom';
 
-function Homepage({ itemsPerPage }) {
+function Homepage() {
+  const navigate = useNavigate();
+  const [itemsPerPage, setItemsPerPage] = useState(6);
 
   const items = [];     //storing fetched notes in seq purpose
   notes.map(note => { if (note.isPinned === "true") items.push(note); })      //pushing pinned notes first
@@ -31,9 +34,17 @@ function Homepage({ itemsPerPage }) {
     );
   }
 
+  const handleNPPchange = (e) => {
+    setItemsPerPage(e.target.value);
+  }
+
   return (
     <div id='Homepage'>
       <h1>Notes</h1>
+
+      {/* dynamic notes per page object */}
+      {/* <a title='Notes Per Page'><input type="number" name="" id="notesperpage" placeholder='Notes' min={1} max={items.length} defaultValue={6} onChange={(e) => handleNPPchange(e)} /></a> */}
+
       {/* displaying cards */}
       <div id="homecards">
         <Items currentItems={currentItems} />
@@ -49,7 +60,12 @@ function Homepage({ itemsPerPage }) {
         onPageChange={handlePageClick}
         renderOnZeroPageCount={null}
         className='CardNav'
+        activeClassName='activePage'
       />
+
+      <div id="createBtn" onClick={() => { navigate("/create") }}>
+        <a title='Create Note'><img src="https://cdn-icons-png.flaticon.com/512/10257/10257707.png" alt="create" /></a>
+      </div>
     </div>
   )
 }

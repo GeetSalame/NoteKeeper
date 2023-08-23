@@ -6,7 +6,9 @@ import Navbar from './components/Navbar/Navbar';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Readnote from './components/ReadNote/Readnote';
+import Readnote from './components/CRUD/ReadNote/Readnote';
+import Createnote from './components/CRUD/CreateNote/Createnote';
+import Updatenote from './components/CRUD/UpdateNote/Updatenote';
 
 function App() {
   return (
@@ -14,8 +16,10 @@ function App() {
       <Navbar />
       <Menubar />
       <Routes>
-        <Route path='/' element={<Homepage itemsPerPage={6} />} />
+        <Route path='/' element={<Homepage />} />
         <Route path='/read' element={<Readnote />} />
+        <Route path='/create' element={<Createnote />} />
+        <Route path='/update' element={<Updatenote />} />
       </Routes>
       <ToastContainer />
     </div>

@@ -1,23 +1,52 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './homepage.css';
 import Notecard from '../Notecard/Notecard';
-import notes from '../../Data/notes';
+// import notes from '../../Data/notes';
+import noteCRUDservices from '../../services/crudServices';
 import ReactPaginate from 'react-paginate';
 import { useNavigate } from 'react-router-dom';
 
 function Homepage() {
   const navigate = useNavigate();
-  const [itemsPerPage, setItemsPerPage] = useState(6);
+  const [itemsPerPage, setItemsPerPage] = useState(6);    //for pagenation
 
   const items = [];     //storing fetched notes in seq purpose
-  notes.map(note => { if (note.isPinned === "true") items.push(note); })      //pushing pinned notes first
-  notes.map(note => { if (note.isPinned === "false") items.push(note); })       //pushing unpinned notes later
 
   //indexes for displaying notes range for particular page
   const [itemOffset, setItemOffset] = useState(0);
-  const endOffset = itemOffset + itemsPerPage;
-  const currentItems = items.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(items.length / itemsPerPage);
+  let endOffset;
+  let currentItems;
+  let pageCount;
+
+  const [notes, setNotes] = useState([]);
+
+  useEffect(() => {
+    console.log("useeffect")
+    fetchAllNotes();
+
+    // endOffset = itemOffset + itemsPerPage;
+    // currentItems = items.slice(itemOffset, endOffset);
+    // pageCount = Math.ceil(items.length / itemsPerPage);
+    // console.log(endOffset, currentItems, pageCount)
+  }, [])
+
+  const fetchAllNotes = async () => {
+    const data = await noteCRUDservices.getAllNotes();
+    // console.log(data)
+    setNotes(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
+    console.log(notes)
+
+    notes.map(note => { if (note.isPinned === true) items.push(note); })      //pushing pinned notes first
+    notes.map(note => { if (note.isPinned === false) items.push(note); })       //pushing unpinned notes later
+
+    console.log(items);
+
+    endOffset = itemOffset + itemsPerPage;
+    currentItems = items.slice(itemOffset, endOffset);
+    pageCount = Math.ceil(items.length / itemsPerPage);
+    console.log(endOffset, currentItems, pageCount)
+  }
+
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
@@ -28,8 +57,8 @@ function Homepage() {
   //displaying current page notes
   function Items({ currentItems }) {
     return (
-      <>{currentItems &&
-        currentItems.map(note => <Notecard title={note.title} tagline={note.tagline} isPinned={note.isPinned} />)
+      <>{console.log(currentItems)}{currentItems &&
+        currentItems.map(note => <Notecard noteObj = {note}/>)
       }</>
     );
   }
@@ -47,7 +76,7 @@ function Homepage() {
 
       {/* displaying cards */}
       <div id="homecards">
-        <Items currentItems={currentItems} />
+        <Items currentItems={notes} />
       </div>
 
       {/* pagenation numbers */}

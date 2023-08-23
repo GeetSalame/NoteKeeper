@@ -11,14 +11,14 @@ class noteCRUDservices {
 
     //read
     getNote = (noteId) => {
-        const noteDoc = collection(firestoreDB, "notes", noteId);
+        const noteDoc = doc(firestoreDB, "notes", noteId);
         return getDoc(noteDoc);
     }
 
     // update
-    updateNote = (noteObj) => {
-        const noteDoc = doc(firestoreDB, "notes", noteObj.id);      //to fetch note document of given id
-        return updateDoc(noteDoc, noteObj);
+    updateNote = (noteId, updatedNoteObj) => {
+        const noteDoc = doc(firestoreDB, "notes", noteId);      //to fetch note document of given id
+        return updateDoc(noteDoc, updatedNoteObj);
     }
 
     //delete

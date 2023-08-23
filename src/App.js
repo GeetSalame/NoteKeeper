@@ -17,9 +17,9 @@ function App() {
       <Menubar />
       <Routes>
         <Route path='/' element={<Homepage />} />
-        <Route path='/read' element={<Readnote />} />
+        <Route path='/read/:id' element={<Readnote />} />
         <Route path='/create' element={<Createnote />} />
-        <Route path='/update' element={<Updatenote />} />
+        <Route path='/update/:id' element={<Updatenote />} />
       </Routes>
       <ToastContainer />
     </div>

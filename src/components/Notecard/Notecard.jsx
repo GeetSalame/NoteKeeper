@@ -22,7 +22,7 @@ function Notecard({ noteObj }) {
     return (
         <div id='Notecard' style={{ background: noteObj.noteColor }}>
             <div style={{ display: "flex" }}>
-                <div id='noteContent' onClick={() => { navigate("/read") }}>
+                <div id='noteContent' onClick={() => { navigate(`/read/${noteObj.id}`) }}>
                     <h1 id="noteTitle" style={{ color: noteObj.textColor }}>{noteObj.title}</h1>
                     <p id="noteTagline" style={{ color: noteObj.textColor }}>{noteObj.tagline}</p>
                     {/* <p id="noteBody">Body</p> */}
@@ -34,10 +34,14 @@ function Notecard({ noteObj }) {
                 </div>
             </div>
             <div id="noteOptions">
+
                 <a title='Note Color'><img src="https://cdn-icons-png.flaticon.com/512/686/686094.png" alt="color" className='NoteOptionsIcons' /></a>
-                <a title='Edit' onClick={() => { navigate("/update") }}><img src="https://cdn-icons-png.flaticon.com/512/2985/2985043.png" alt="edit" className='NoteOptionsIcons' /></a>
+
+                <a title='Edit' onClick={() => { navigate(`/update/${noteObj.id}`) }}><img src="https://cdn-icons-png.flaticon.com/512/2985/2985043.png" alt="edit" className='NoteOptionsIcons' /></a>
+
                 <a title='Archive'><img src="https://cdn-icons-png.flaticon.com/512/7693/7693316.png" alt="archives" className='NoteOptionsIcons' /></a>
-                <a title='Delete'><img src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png" onClick={() => deleteNote(noteObj.id)} alt="delete" className='NoteOptionsIcons' /></a>
+
+                <a title='Delete' onClick={() => deleteNote(noteObj.id)}><img src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png" alt="delete" className='NoteOptionsIcons' /></a>
             </div>
         </div>
     )

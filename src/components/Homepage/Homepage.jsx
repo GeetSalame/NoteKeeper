@@ -14,14 +14,11 @@ function Homepage() {
   //fetching all notes data from DB
   const fetchAllNotes = async () => {
     const data = await noteCRUDservices.getAllNotes();
-    console.log(data)
     setNotes(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
-    console.log(notes)
   }
 
   //reloading to show fetched notes
   useEffect(() => {
-    console.log("useeffect")
     fetchAllNotes();
   }, [])
 
@@ -32,9 +29,9 @@ function Homepage() {
 
   //indexes for displaying notes range for particular page
   const [itemOffset, setItemOffset] = useState(0);
-  const endOffset = itemOffset + itemsPerPage;
-  const currentItems = items.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(items.length / itemsPerPage);
+  var endOffset = itemOffset + itemsPerPage;
+  var currentItems = items.slice(itemOffset, endOffset);
+  var pageCount = Math.ceil(items.length / itemsPerPage);
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
@@ -45,19 +42,27 @@ function Homepage() {
   //displaying current page notes
   function Items({ currentItems }) {
     return (
-      <>{console.log(currentItems)}{currentItems &&
-        currentItems.map(note => <Notecard noteObj={note} />)
+      <>{currentItems &&
+        currentItems.map(note => <Notecard noteObj={note} key={note.id} />)
       }</>
     );
   }
 
+
+  // dynamic notes per pages functions
   // const handleNPPchange = (e) => {
   //   setItemsPerPage(e.target.value);
   // }
 
+  // useEffect(() => {
+  //   endOffset = itemOffset + itemsPerPage;
+  //   currentItems = items.slice(itemOffset, endOffset);
+  //   pageCount = Math.ceil(items.length / itemsPerPage);
+  // }, [itemsPerPage])
+
   return (
     <div id='Homepage'>
-      <h1>Notes</h1>
+      <h1 id='NotesHead'>Notes</h1>
 
       {/* dynamic notes per page object */}
       {/* <a title='Notes Per Page'><input type="number" name="" id="notesperpage" placeholder='Notes' min={1} max={items.length} defaultValue={6} onChange={(e) => handleNPPchange(e)} /></a> */}

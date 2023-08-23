@@ -8,6 +8,10 @@
     align-items: center;
 }
 
+#NotesHead{
+    /* color: var(--theme-pri); */
+}
+
 #notesperpage {
     position: fixed;
     top: calc(var(--nav-height) + 30px);

@@ -25,3 +25,55 @@
 #closeNoteIcon:hover {
     transform: scale(1.1);
 }
+
+
+:root {
+    --readnotecard-width: 500px;
+    --readnotecard-height: 400px;
+}
+
+#ReadNotecard>*,
+#ReadNotecard>*>* {
+    /* border: 2px solid red; */
+}
+
+#ReadNotecard {
+    /* border: 2px solid red; */
+    width: var(--readnotecard-width);
+    height: fit-content;
+    margin: auto;
+    padding: 10px 20px;
+
+    background: rgba(255, 255, 255, .9);
+    box-shadow: 0 0 10px rgba(192, 192, 192, 0.5);
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* align-items: flex-start; */
+}
+
+#ReadNotecard:hover {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 10px var(--bg-theme-grad-faint);
+}
+
+#ReadNotecardHead {
+    display: flex;
+    height: 60%;
+}
+
+#ReadnoteContent {
+    cursor: pointer;
+    width: 100%;
+}
+
+#ReadnoteTitle {
+    font-size: x-large;
+    color: black;
+}
+
+#ReadnoteTagline {
+    color: grey;
+}

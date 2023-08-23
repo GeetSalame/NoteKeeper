@@ -8,9 +8,6 @@
     align-items: center;
 }
 
-#NotesHead{
-    /* color: var(--theme-pri); */
-}
 
 #notesperpage {
     position: fixed;

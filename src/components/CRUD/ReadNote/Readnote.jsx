@@ -28,7 +28,7 @@ function Readnote() {
         <div id="ReadNote">
             <img src="https://cdn-icons-png.flaticon.com/512/5368/5368396.png" alt="close" id='closeNoteIcon' onClick={() => { navigate("/") }} />
 
-            <div id='ReadNotecard' style={{ background: NoteObj.noteColor }}>
+            <div id='ReadNotecard' style={{ background: `linear-gradient(45deg, ${NoteObj.noteColor}, ${NoteObj.noteColor + 'B3'})` }}>
                 <div id='ReadNotecardHead'>
                     <div id='ReadnoteContent'>
                         <h1 id="ReadnoteTitle" style={{ color: NoteObj.textColor }}>{NoteObj.title}</h1>

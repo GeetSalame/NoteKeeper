@@ -32,11 +32,6 @@
     --readnotecard-height: 400px;
 }
 
-#ReadNotecard>*,
-#ReadNotecard>*>* {
-    /* border: 2px solid red; */
-}
-
 #ReadNotecard {
     /* border: 2px solid red; */
     width: var(--readnotecard-width);

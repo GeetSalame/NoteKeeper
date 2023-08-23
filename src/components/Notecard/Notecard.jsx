@@ -19,8 +19,19 @@ function Notecard({ noteObj }) {
         }
     }
 
+    //returns date seconds in formatted string
+    const formatDate = (dateSeconds) => {
+        const MonthArr = ['Jan', 'Feb', 'Mar', "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dev"];
+        const date = new Date(dateSeconds * 1000);
+        const dateNum = date.getDate();
+        const MonthNum = date.getMonth();
+        const Year = date.getFullYear();
+        return `${dateNum} ${MonthArr[MonthNum]}, ${Year}`;
+
+    }
+
     return (
-        <div id='Notecard' style={{ background: noteObj.noteColor }}>
+        <div id='Notecard' style={{ background: `linear-gradient(45deg, ${noteObj.noteColor}, ${noteObj.noteColor + 'B3'})` }}>
             <div style={{ display: "flex" }}>
                 <div id='noteContent' onClick={() => { navigate(`/read/${noteObj.id}`) }}>
                     <h1 id="noteTitle" style={{ color: noteObj.textColor }}>{noteObj.title}</h1>
@@ -35,7 +46,7 @@ function Notecard({ noteObj }) {
             </div>
             <div id="noteOptions">
 
-                <a title='Note Color'><img src="https://cdn-icons-png.flaticon.com/512/686/686094.png" alt="color" className='NoteOptionsIcons' /></a>
+                {/* <a title='Note Color'><img src="https://cdn-icons-png.flaticon.com/512/686/686094.png" alt="color" className='NoteOptionsIcons' /></a> */}
 
                 <a title='Edit' onClick={() => { navigate(`/update/${noteObj.id}`) }}><img src="https://cdn-icons-png.flaticon.com/512/2985/2985043.png" alt="edit" className='NoteOptionsIcons' /></a>
 
@@ -43,6 +54,8 @@ function Notecard({ noteObj }) {
 
                 <a title='Delete' onClick={() => deleteNote(noteObj.id)}><img src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png" alt="delete" className='NoteOptionsIcons' /></a>
             </div>
+
+            <div id='noteDate' style={{ color: noteObj.textColor }}>{formatDate(noteObj.date.seconds)}</div>
         </div>
     )
 }

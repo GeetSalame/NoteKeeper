@@ -31,9 +31,6 @@
     --createnotecard-height: 400px;
 }
 
-#CreateNotecard>*, #CreateNotecard>*>*{
-    /* border: 2px solid red; */
-}
 
 #CreateNotecard {
     /* border: 2px solid red; */

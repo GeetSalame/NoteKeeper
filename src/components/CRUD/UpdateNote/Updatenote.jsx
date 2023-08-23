@@ -32,7 +32,7 @@ function Updatenote() {
     }, [])
 
     const handleNoteChange = (e) => {
-        setUpdatedNoteObj({ ...updatedNoteObj, [e.target.name]: e.target.value });
+        setUpdatedNoteObj({ ...updatedNoteObj, [e.target.name]: e.target.value, date: new Date() });
     }
 
     const handlePin = (e) => {
@@ -44,7 +44,7 @@ function Updatenote() {
         document.getElementById("UpdatenoteTitle").style.color = updatedNoteObj.textColor;
         document.getElementById("UpdatenoteTagline").style.color = updatedNoteObj.textColor;
         document.getElementById("UpdatenoteBody").style.color = updatedNoteObj.textColor;
-        document.getElementById("UpdateNotecard").style.background = updatedNoteObj.noteColor;
+        document.getElementById("UpdateNotecard").style.background = `linear-gradient(45deg, ${updatedNoteObj.noteColor}, ${updatedNoteObj.noteColor + 'B3'})`;
     }, [updatedNoteObj])
 
     const updateNote = async () => {

@@ -25,3 +25,117 @@
 #closeNoteIcon:hover {
     transform: scale(1.1);
 }
+
+:root {
+    --createnotecard-width: 500px;
+    --createnotecard-height: 400px;
+}
+
+#CreateNotecard>*, #CreateNotecard>*>*{
+    /* border: 2px solid red; */
+}
+
+#CreateNotecard {
+    /* border: 2px solid red; */
+    width: var(--createnotecard-width);
+    height: var(--createnotecard-height);
+    margin: auto;
+    padding: 10px 20px;
+
+    background: rgba(255, 255, 255, .9);
+    box-shadow: 0 0 10px rgba(192, 192, 192, 0.5);
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* align-items: flex-start; */
+}
+
+#CreateNotecard:hover {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 10px var(--bg-theme-grad-faint);
+}
+
+#CreateNotecardHead{
+    display: flex;
+    height: 60%;
+}
+
+#CreateNotecard:hover #CreatenoteOptions {
+    display: flex;
+}
+
+#CreatenoteContent {
+    cursor: pointer;
+    width: 100%;
+}
+
+#CreatenoteContent>input,
+#CreatenoteContent>textarea {
+    border: none;
+    outline: none;
+    width: 100%;
+    margin: 5px 0;
+    background: transparent;
+}
+
+#CreatenoteContent>textarea{
+    height: 100%;
+}
+
+#CreatenoteContent>input:hover,
+#CreatenoteContent>input:focus,
+#CreatenoteContent>textarea:hover,
+#CreatenoteContent>textarea:focus {
+    background: var(--bg-theme-grad-faint);
+    cursor: pointer;
+}
+
+#CreatenoteTitle {
+    font-size: x-large;
+    color: black;
+}
+
+#CreatenoteTagline {
+    color: grey;
+}
+
+.NoteOptionsIcons {
+    /* border: 2px solid red; */
+    width: 45px;
+    height: 45px;
+    padding: 10px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.NoteOptionsIcons:hover {
+    background: rgba(255, 206, 161, 0.6);
+}
+
+#CreatenotePinsec {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#CreatenotePinsec>a {
+    margin: auto;
+}
+
+.notePin {
+    transform: rotate(-45deg);
+    height: 20px;
+}
+
+#CreatenoteOptions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto 10px;
+    gap: 20px;
+}

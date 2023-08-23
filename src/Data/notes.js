@@ -4,7 +4,9 @@ let notes = [
         tagline: "tagline",
         body: "body",
         isPinned: "true",
-        color: ""
+        noteColor: "",
+        textColor: "",
+        date: ""
     },
     {
         title: "Title 2",

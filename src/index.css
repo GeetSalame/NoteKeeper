@@ -17,8 +17,9 @@
   --nav-padding-LR: 30px;
   --sidebar-width: 85px;
 
-  --bg-theme-grad : linear-gradient(180deg, #fedec3b9, #fedec3);
-  --bg-blue-faint : #ecefff82;
+  --bg-theme-grad: linear-gradient(180deg, #fedec3b9, #fedec3);
+  --bg-theme-grad-faint: linear-gradient(180deg, #fedec33c, #fedec33c);
+  --bg-blue-faint: #ecefff82;
 }
 
 body {
@@ -38,4 +39,18 @@ body {
 
 .icon:hover {
   transform: scale(1.1);
+}
+
+.btn{
+  width:fit-content ;
+  background: transparent;
+  color: var(--theme-pri);
+  border: 2px solid var(--theme-pri);
+  padding: 5px 20px;
+  border-radius: 5px;
+}
+
+.btn:hover{
+  background: var(--theme-pri);
+  color: white;
 }

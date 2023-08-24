@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import './updatenote.css';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import noteCRUDservices from "../../../services/crudServices";
 import ReactLoading from 'react-loading';
+import { toast } from 'react-toastify';
+import './updatenote.css';
+import noteCRUDservices from "../../../services/crudServices";
 
 function Updatenote() {
     const navigate = useNavigate();
@@ -32,14 +32,17 @@ function Updatenote() {
         fetchNote();
     }, [])
 
+    // updating note with change in input fields
     const handleNoteChange = (e) => {
         setUpdatedNoteObj({ ...updatedNoteObj, [e.target.name]: e.target.value, date: new Date() });
     }
 
+    // handling note pin
     const handlePin = (e) => {
         setUpdatedNoteObj({ ...updatedNoteObj, isPinned: e });
     }
 
+    // reflecting note theme with change in input theme fields
     useEffect(() => {
         console.log(updatedNoteObj);
         document.getElementById("UpdatenoteTitle").style.color = updatedNoteObj.textColor;
@@ -48,6 +51,7 @@ function Updatenote() {
         document.getElementById("UpdateNotecard").style.background = `linear-gradient(45deg, ${updatedNoteObj.noteColor}, ${updatedNoteObj.noteColor + 'B3'})`;
     }, [updatedNoteObj])
 
+    // posting the updated note to DB as the used hits update btn with handling some  possible exceptions
     const updateNote = async () => {
         if (updatedNoteObj.title === "") {
             toast.error("Title can't be blank");

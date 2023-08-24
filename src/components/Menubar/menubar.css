@@ -34,6 +34,7 @@
 
 .menubarIcons:hover {
     background: rgba(255, 206, 161, 0.6);
+    cursor: pointer;
 }
 
 /* .menubarIcons>a {
@@ -42,4 +43,10 @@
 
 .menubarIcons>img {
     height: 25px;
+}
+
+@media screen and (max-width : 600px) {
+    #Menubar {
+        display: none;
+    }
 }

@@ -4,7 +4,7 @@ import Homepage from './components/Homepage/Homepage';
 import Menubar from './components/Menubar/Menubar';
 import Navbar from './components/Navbar/Navbar';
 
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Readnote from './components/CRUD/ReadNote/Readnote';
 import Createnote from './components/CRUD/CreateNote/Createnote';
@@ -21,7 +21,7 @@ function App() {
         <Route path='/create' element={<Createnote />} />
         <Route path='/update/:id' element={<Updatenote />} />
       </Routes>
-      <ToastContainer />
+      <ToastContainer bodyClassName='toastBody'/>
     </div>
   );
 }

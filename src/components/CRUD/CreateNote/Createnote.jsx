@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import './createnote.css';
 import { toast } from 'react-toastify';
+import './createnote.css';
 import noteCRUDservices from '../../../services/crudServices'
 
 function Createnote() {
     const navigate = useNavigate();
+
+    // default initial state of note
     const [noteObj, setNoteObj] = useState({
         title: "",
         tagline: "",
@@ -16,14 +18,17 @@ function Createnote() {
         date: new Date()
     });
 
+    // changing note data with change in input fields
     const handleNoteChange = (e) => {
         setNoteObj({ ...noteObj, [e.target.name]: e.target.value });
     }
 
+    // handling note pin state
     const handlePin = (e) => {
         setNoteObj({ ...noteObj, isPinned: e });
     }
 
+    // reflecting changes of note theme with its selection by user
     useEffect(() => {
         console.log(noteObj);
         document.getElementById("CreatenoteTitle").style.color = noteObj.textColor;
@@ -32,13 +37,13 @@ function Createnote() {
         document.getElementById("CreateNotecard").style.background = noteObj.noteColor;
     }, [noteObj])
 
+    // posting the note as the user hits create btn with handling some possible exceptions
     const createNote = async () => {
         if (noteObj.title === "") {
             toast.error("Title can't be blank");
         } else {
             try {
                 await noteCRUDservices.postNote(noteObj);
-                console.log("Note Posted : ", noteObj);
                 toast.success("Note Created");
                 navigate("/");
             } catch (error) {

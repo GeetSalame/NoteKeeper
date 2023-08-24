@@ -1,7 +1,7 @@
 import { firestoreDB } from "../firebase-config";       //DB
 import { collection, getDoc, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";        //CRUD functions
 
-const notesCollection = collection(firestoreDB, "notes");
+const notesCollection = collection(firestoreDB, "notes");       //notes collection in DB
 
 class noteCRUDservices {
     // create
@@ -11,7 +11,7 @@ class noteCRUDservices {
 
     //read
     getNote = (noteId) => {
-        const noteDoc = doc(firestoreDB, "notes", noteId);
+        const noteDoc = doc(firestoreDB, "notes", noteId);      //to fetch note document of given id
         return getDoc(noteDoc);
     }
 

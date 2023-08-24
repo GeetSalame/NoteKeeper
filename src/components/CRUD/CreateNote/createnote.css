@@ -98,21 +98,6 @@
     color: grey;
 }
 
-.NoteOptionsIcons {
-    /* border: 2px solid red; */
-    width: 45px;
-    height: 45px;
-    padding: 10px;
-    border-radius: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.NoteOptionsIcons:hover {
-    background: rgba(255, 206, 161, 0.6);
-}
-
 #CreatenotePinsec {
     margin-left: auto;
     display: flex;
@@ -135,4 +120,14 @@
     width: 100%;
     margin: 0 auto 10px;
     gap: 20px;
+}
+
+@media screen and (max-width : 500px) {
+    :root {
+        --createnotecard-width: 350px;
+    }
+
+    #CreateNotecard {
+        padding: 20px;
+    }
 }

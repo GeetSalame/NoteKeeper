@@ -39,10 +39,11 @@ body {
 
 .icon:hover {
   transform: scale(1.1);
+  cursor: pointer;
 }
 
-.btn{
-  width:fit-content ;
+.btn {
+  width: fit-content;
   background: transparent;
   color: var(--theme-pri);
   border: 2px solid var(--theme-pri);
@@ -50,20 +51,51 @@ body {
   border-radius: 5px;
 }
 
-.btn:hover{
+.btn:hover {
   background: var(--theme-pri);
   color: white;
+  cursor: pointer;
 }
 
-.loading{
+.loading {
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
   background: var(--bg-theme-grad-faint);
+}
+
+.NoteOptionsIcons {
+  /* border: 2px solid red; */
+  width: 45px;
+  height: 45px;
+  padding: 10px;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.NoteOptionsIcons:hover {
+  background: rgba(255, 206, 161, 0.6);
+  cursor: pointer;
+}
+
+
+@media screen and (max-width : 1000px) {
+  .NoteOptionsIcons {
+    /* border: 2px solid red; */
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

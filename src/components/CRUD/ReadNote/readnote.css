@@ -74,8 +74,8 @@
     margin: 5px 0;
 }
 
-#ReadnoteOptions{
-    margin: 20px 0 0;
+#ReadnoteOptions {
+    margin: 50px 0 0;
     width: fit-content;
     border-radius: 100px;
 }
@@ -89,4 +89,20 @@
     font-weight: bold;
     margin-left: auto;
     margin-top: 20px;
+}
+
+@media screen and (max-width : 600px) {
+    :root {
+        --readnotecard-width: 400px;
+    }
+
+    #ReadNotecard {
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width : 500px) {
+    :root {
+        --readnotecard-width: 350px;
+    }
 }

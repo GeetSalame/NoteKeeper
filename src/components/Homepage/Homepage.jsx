@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import './homepage.css';
-import Notecard from '../Notecard/Notecard';
-// import notes from '../../Data/notes';
-import noteCRUDservices from '../../services/crudServices';
-import ReactPaginate from 'react-paginate';
 import { useNavigate } from 'react-router-dom';
+import ReactPaginate from 'react-paginate';
+import './homepage.css';
+
+import noteCRUDservices from '../../services/crudServices';
+import Notecard from '../Notecard/Notecard';
 
 function Homepage() {
   const navigate = useNavigate();
   const [notes, setNotes] = useState([]);   //for storing fetched data from DB
-  const [itemsPerPage, setItemsPerPage] = useState(6);
 
   //fetching all notes data from DB
   const fetchAllNotes = async () => {
@@ -17,7 +16,7 @@ function Homepage() {
     setNotes(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
   }
 
-  //reloading to show fetched notes
+  //refreshing page to show fetched notes
   useEffect(() => {
     fetchAllNotes();
   }, [])
@@ -28,10 +27,11 @@ function Homepage() {
   notes.map(note => { if (note.isPinned === false) items.push(note); })       //pushing unpinned notes later
 
   //indexes for displaying notes range for particular page
-  const [itemOffset, setItemOffset] = useState(0);
-  var endOffset = itemOffset + itemsPerPage;
-  var currentItems = items.slice(itemOffset, endOffset);
-  var pageCount = Math.ceil(items.length / itemsPerPage);
+  const [itemsPerPage, setItemsPerPage] = useState(6);    //notes per page
+  const [itemOffset, setItemOffset] = useState(0);        //starting index for current page
+  var endOffset = itemOffset + itemsPerPage;              //ending index for current page
+  var currentItems = items.slice(itemOffset, endOffset);  //notes array for current page
+  var pageCount = Math.ceil(items.length / itemsPerPage); //total pages according to notes per pages
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
@@ -85,6 +85,7 @@ function Homepage() {
         activeClassName='activePage'
       />
 
+      {/* Create Note Button */}
       <div id="createBtn" onClick={() => { navigate("/create") }}>
         <a title='Create Note'><img src="https://cdn-icons-png.flaticon.com/512/10257/10257707.png" alt="create" /></a>
       </div>

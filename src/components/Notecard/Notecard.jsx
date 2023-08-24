@@ -1,14 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import './notecard.css';
-import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import './notecard.css';
 import noteCRUDservices from '../../services/crudServices';
 
 function Notecard({ noteObj }) {
     const navigate = useNavigate();
     const [updatedNoteObj, setUpdatedNoteObj] = useState(noteObj);      //copying initial data
-    // console.log(updatedNoteObj)
 
+    //returns date.seconds in formatted string
+    const formatDate = (dateSeconds) => {
+        const MonthArr = ['Jan', 'Feb', 'Mar', "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dev"];
+        const date = new Date(dateSeconds * 1000);
+        const dateNum = date.getDate();
+        const MonthNum = date.getMonth();
+        const Year = date.getFullYear();
+        return `${dateNum} ${MonthArr[MonthNum]}, ${Year}`;
+
+    }
+
+    // deleting the note from home page itself
     const deleteNote = async (noteId) => {
         try {
             await noteCRUDservices.deleteNote(noteId);
@@ -21,24 +32,14 @@ function Notecard({ noteObj }) {
         }
     }
 
-    //returns date seconds in formatted string
-    const formatDate = (dateSeconds) => {
-        const MonthArr = ['Jan', 'Feb', 'Mar', "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dev"];
-        const date = new Date(dateSeconds * 1000);
-        const dateNum = date.getDate();
-        const MonthNum = date.getMonth();
-        const Year = date.getFullYear();
-        return `${dateNum} ${MonthArr[MonthNum]}, ${Year}`;
-
-    }
-
-    // console.log(updatedNoteObj)
+    //handling pin from home page itself
     const handlePin = async (e) => {
         console.log(e)
         await setUpdatedNoteObj({ ...updatedNoteObj, isPinned: e });
         window.location.reload();
     }
 
+    //reflecting changes after handling pin
     useEffect(() => {
         async function updateNote() {
             if (updatedNoteObj?.title === "") {
@@ -74,7 +75,7 @@ function Notecard({ noteObj }) {
 
                 <a title='Edit' style={{ background: "white", borderRadius: "100px" }} onClick={() => { navigate(`/update/${noteObj.id}`) }}><img src="https://cdn-icons-png.flaticon.com/512/2985/2985043.png" alt="edit" className='NoteOptionsIcons' /></a>
 
-                <a title='Archive' style={{ background: "white", borderRadius: "100px" }}><img src="https://cdn-icons-png.flaticon.com/512/7693/7693316.png" alt="archives" className='NoteOptionsIcons' /></a>
+                {/* <a title='Archive' style={{ background: "white", borderRadius: "100px" }}><img src="https://cdn-icons-png.flaticon.com/512/7693/7693316.png" alt="archives" className='NoteOptionsIcons' /></a> */}
 
                 <a title='Delete' style={{ background: "white", borderRadius: "100px" }} onClick={() => deleteNote(noteObj.id)}><img src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png" alt="delete" className='NoteOptionsIcons' /></a>
             </div>

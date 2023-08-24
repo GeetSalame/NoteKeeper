@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import Notecard from '../../Notecard/Notecard';
-import './readnote.css';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import './readnote.css';
 import noteCRUDservices from "../../../services/crudServices";
 
 function Readnote() {
     const navigate = useNavigate();
     const noteId = window.location.href.split('/').slice(-1)[0];        //fetching noteId from url
-
     const [NoteObj, setNoteObj] = useState({});
 
-    //filling values with old data
+    //filling values with fetched data
     useEffect(() => {
         async function fetchNote() {
             try {
@@ -24,7 +22,7 @@ function Readnote() {
         fetchNote();
     }, [])
 
-    //returns date seconds in formatted string
+    //returns date.seconds in formatted string
     const formatDate = (dateSeconds) => {
         const MonthArr = ['Jan', 'Feb', 'Mar', "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dev"];
         const date = new Date(dateSeconds * 1000);

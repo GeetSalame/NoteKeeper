@@ -33,7 +33,7 @@
     height: 30px;
 }
 
-#logo>h1{
+#logo>h1 {
     font-size: x-large;
 }
 
@@ -59,4 +59,43 @@
 #searchInp:focus {
     border: none;
     outline: none;
+}
+
+
+/*---------------------- Responsiveness */
+@media screen and (max-width : 1500px) {
+    #Navbar {
+        padding: 5px var(--nav-padding-LR);
+    }
+
+    #Navsearch {
+        display: flex;
+        gap: 10px;
+        padding: 10px 20px;
+        width: 50vw;
+        background: rgba(192, 192, 192, 0.3);
+        border-radius: 5px;
+    }
+
+    #searchIcon {
+        height: 20px;
+    }
+
+    #searchInp {
+        border: none;
+        background: transparent;
+        width: 100%;
+    }
+
+    #searchInp:focus {
+        border: none;
+        outline: none;
+    }
+
+}
+
+@media screen and (max-width : 600px) {
+    #Navsearch {
+        display: none;
+    }
 }

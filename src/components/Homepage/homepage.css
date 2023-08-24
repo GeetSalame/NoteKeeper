@@ -82,6 +82,17 @@ input[type=number]::-webkit-inner-spin-button {
     opacity: 1;
 }
 
+@media screen and (max-width : 1300px) {
+    #Homepage {
+        padding: var(--nav-height) 0;
+        margin: 30px 0 0;
+    }
+
+    #homecards {
+        grid-template-columns: auto auto;
+    }
+}
+
 @media screen and (max-width : 650px) {
     .CardNav {
         position: fixed;
@@ -103,5 +114,16 @@ input[type=number]::-webkit-inner-spin-button {
         width: 30px;
         height: 30px;
         font-weight: bold;
+    }
+
+    #homecards {
+        grid-template-columns: auto;
+    }
+
+    #createBtn {
+        position: fixed;
+        right: 50px;
+        bottom: 100px;
+        z-index: 500;
     }
 }

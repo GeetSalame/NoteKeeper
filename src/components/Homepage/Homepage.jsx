@@ -75,7 +75,7 @@ function Homepage() {
       {/* pagenation numbers */}
       <ReactPaginate
         pageCount={pageCount}
-        pageRangeDisplayed={3}
+        pageRangeDisplayed={1}
         breakLabel="..."
         previousLabel="<"
         nextLabel=">"

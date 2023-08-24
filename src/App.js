@@ -21,6 +21,7 @@ function App() {
         <Route path='/create' element={<Createnote />} />
         <Route path='/update/:id' element={<Updatenote />} />
       </Routes>
+      <div style={{textAlign:"center", margin:"100px 0", opacity:".5"}}>Developed by <a href='https://www.linkedin.com/in/geet-salame-57a6a71b6/' target='_blank'>Geet Salame</a></div>
       <ToastContainer bodyClassName='toastBody'/>
     </div>
   );

@@ -3,6 +3,7 @@ import './updatenote.css';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import noteCRUDservices from "../../../services/crudServices";
+import ReactLoading from 'react-loading';
 
 function Updatenote() {
     const navigate = useNavigate();
@@ -65,36 +66,50 @@ function Updatenote() {
     return (
         <div id="UpdateNote">
             <img src="https://cdn-icons-png.flaticon.com/512/5368/5368396.png" alt="close" id='closeNoteIcon' onClick={() => { navigate("/") }} />
-
             <div id='UpdateNotecard'>
-                <div id='UpdateNotecardHead'>
-                    <div id='UpdatenoteContent'>
-                        <input type="text" name="title" id="UpdatenoteTitle" onChange={(e) => { handleNoteChange(e) }} placeholder='Title' defaultValue={updatedNoteObj.title} />
-                        <input type="text" name="tagline" id="UpdatenoteTagline" onChange={(e) => { handleNoteChange(e) }} placeholder='Tagline' defaultValue={updatedNoteObj.tagline} />
-                        <textarea type="text" name="body" id="UpdatenoteBody" onChange={(e) => { handleNoteChange(e) }} placeholder='Body' defaultValue={updatedNoteObj.body} />
-                    </div>
-                    <div id="UpdatenotePinsec" className='NoteOptionsIcons'>
-                        {
-                            updatedNoteObj.isPinned === true ?
-                                <a title='Unpin' onClick={() => { handlePin(false) }}><img src="https://cdn-icons-png.flaticon.com/512/2951/2951513.png" alt="pinned" className='notePin' /></a>
-                                : <a title='Pin' onClick={() => { handlePin(true) }}><img src="https://cdn-icons-png.flaticon.com/512/2951/2951412.png" alt="notPinned" className='notePin' /></a>
-                        }
-                    </div>
-                </div>
-                <div id="UpdatenoteOptions">
-                    <div style={{ display: "flex" }}>
+                {
+                    updatedNoteObj ?
+                        <>
+                            <div id='UpdateNotecardHead'>
+                                <div id='UpdatenoteContent'>
+                                    <input type="text" name="title" id="UpdatenoteTitle" onChange={(e) => { handleNoteChange(e) }} placeholder='Title' defaultValue={updatedNoteObj.title} />
+                                    <input type="text" name="tagline" id="UpdatenoteTagline" onChange={(e) => { handleNoteChange(e) }} placeholder='Tagline' defaultValue={updatedNoteObj.tagline} />
+                                    <textarea type="text" name="body" id="UpdatenoteBody" onChange={(e) => { handleNoteChange(e) }} placeholder='Body' defaultValue={updatedNoteObj.body} />
+                                </div>
+                                <div id="UpdatenotePinsec" className='NoteOptionsIcons'>
+                                    {
+                                        updatedNoteObj.isPinned === true ?
+                                            <a title='Unpin' onClick={() => { handlePin(false) }}><img src="https://cdn-icons-png.flaticon.com/512/2951/2951513.png" alt="pinned" className='notePin' /></a>
+                                            : <a title='Pin' onClick={() => { handlePin(true) }}><img src="https://cdn-icons-png.flaticon.com/512/2951/2951412.png" alt="notPinned" className='notePin' /></a>
+                                    }
+                                </div>
+                            </div>
+                            <div id="UpdatenoteOptions">
+                                <div style={{ display: "flex" }}>
 
-                        {/* Note color */}
-                        <a title='Note Color' style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "center" }} className='NoteOptionsIcons'><img src="https://cdn-icons-png.flaticon.com/512/686/686094.png" alt="color" className='NoteOptionsIcons' /><input type="color" name="noteColor" id="notecolor" style={{ position: "absolute", opacity: "0" }} onChange={(e) => { handleNoteChange(e) }} />
-                        </a>
+                                    {/* Note color */}
+                                    <a title='Note Color' style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "center" }} className='NoteOptionsIcons'><img src="https://cdn-icons-png.flaticon.com/512/686/686094.png" alt="color" className='NoteOptionsIcons' /><input type="color" name="noteColor" id="notecolor" style={{ position: "absolute", opacity: "0" }} onChange={(e) => { handleNoteChange(e) }} />
+                                    </a>
 
-                        {/* Text color */}
-                        <a title='Text Color' style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "center" }} className='NoteOptionsIcons'><h1 className='NoteOptionsIcons' id='textColor'>A</h1><input type="color" name="textColor" id="textcolorInp" style={{ position: "absolute", opacity: "0" }} onChange={(e) => { handleNoteChange(e) }} />
-                        </a>
+                                    {/* Text color */}
+                                    <a title='Text Color' style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "center" }} className='NoteOptionsIcons'><h1 className='NoteOptionsIcons' id='textColor'>A</h1><input type="color" name="textColor" id="textcolorInp" style={{ position: "absolute", opacity: "0" }} onChange={(e) => { handleNoteChange(e) }} />
+                                    </a>
 
-                    </div>
-                    <button className='btn' onClick={updateNote}>Update</button>
-                </div>
+                                </div>
+                                <button className='btn' onClick={updateNote}>Update</button>
+                            </div>
+                        </>
+                        : <>
+                            <div className="loading">
+                                <ReactLoading
+                                    type="spinningBubbles"
+                                    color="orange"
+                                    height={100}
+                                    width={50}
+                                />
+                            </div>
+                        </>
+                }
             </div>
         </div>
     )

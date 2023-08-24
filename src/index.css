@@ -54,3 +54,16 @@ body {
   background: var(--theme-pri);
   color: white;
 }
+
+.loading{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-theme-grad-faint);
+}

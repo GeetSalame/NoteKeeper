@@ -47,6 +47,7 @@
     flex-direction: column;
     justify-content: space-between;
     /* align-items: flex-start; */
+    position: relative;
 }
 
 #ReadNotecard:hover {
@@ -60,7 +61,6 @@
 }
 
 #ReadnoteContent {
-    cursor: pointer;
     width: 100%;
 }
 
@@ -71,4 +71,22 @@
 
 #ReadnoteTagline {
     color: grey;
+    margin: 5px 0;
+}
+
+#ReadnoteOptions{
+    margin: 20px 0 0;
+    width: fit-content;
+    border-radius: 100px;
+}
+
+#ReadnoteDate {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    opacity: .5;
+    font-size: x-small;
+    font-weight: bold;
+    margin-left: auto;
+    margin-top: 20px;
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './notecard.css';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
@@ -6,6 +6,8 @@ import noteCRUDservices from '../../services/crudServices';
 
 function Notecard({ noteObj }) {
     const navigate = useNavigate();
+    const [updatedNoteObj, setUpdatedNoteObj] = useState(noteObj);      //copying initial data
+    // console.log(updatedNoteObj)
 
     const deleteNote = async (noteId) => {
         try {
@@ -30,6 +32,28 @@ function Notecard({ noteObj }) {
 
     }
 
+    // console.log(updatedNoteObj)
+    const handlePin = async (e) => {
+        console.log(e)
+        await setUpdatedNoteObj({ ...updatedNoteObj, isPinned: e });
+        window.location.reload();
+    }
+
+    useEffect(() => {
+        async function updateNote() {
+            if (updatedNoteObj?.title === "") {
+                toast.error("Title can't be blank");
+            } else {
+                try {
+                    await noteCRUDservices.updateNote(noteObj.id, updatedNoteObj);
+                } catch (error) {
+                    toast.error(error);
+                }
+            }
+        }
+        updateNote();
+    }, [updatedNoteObj])
+
     return (
         <div id='Notecard' style={{ background: `linear-gradient(45deg, ${noteObj.noteColor}, ${noteObj.noteColor + 'B3'})` }}>
             <div style={{ display: "flex" }}>
@@ -39,20 +63,20 @@ function Notecard({ noteObj }) {
                     {/* <p id="noteBody">Body</p> */}
                 </div>
                 <div id="notePinsec" className='NoteOptionsIcons'>
-                    {noteObj.isPinned === true ?
-                        <a title='Unpin'><img src="https://cdn-icons-png.flaticon.com/512/2951/2951513.png" alt="pinned" className='notePin' /></a>
-                        : <a title='Pin'><img src="https://cdn-icons-png.flaticon.com/512/2951/2951412.png" alt="notPinned" className='notePin' /></a>}
+                    {updatedNoteObj.isPinned === true ?
+                        <a title='Unpin' onClick={() => { handlePin(false) }}><img src="https://cdn-icons-png.flaticon.com/512/2951/2951513.png" alt="pinned" className='notePin' /></a>
+                        : <a title='Pin' onClick={() => { handlePin(true) }}><img src="https://cdn-icons-png.flaticon.com/512/2951/2951412.png" alt="notPinned" className='notePin' /></a>}
                 </div>
             </div>
             <div id="noteOptions">
 
                 {/* <a title='Note Color'><img src="https://cdn-icons-png.flaticon.com/512/686/686094.png" alt="color" className='NoteOptionsIcons' /></a> */}
 
-                <a title='Edit' onClick={() => { navigate(`/update/${noteObj.id}`) }}><img src="https://cdn-icons-png.flaticon.com/512/2985/2985043.png" alt="edit" className='NoteOptionsIcons' /></a>
+                <a title='Edit' style={{ background: "white", borderRadius: "100px" }} onClick={() => { navigate(`/update/${noteObj.id}`) }}><img src="https://cdn-icons-png.flaticon.com/512/2985/2985043.png" alt="edit" className='NoteOptionsIcons' /></a>
 
-                <a title='Archive'><img src="https://cdn-icons-png.flaticon.com/512/7693/7693316.png" alt="archives" className='NoteOptionsIcons' /></a>
+                <a title='Archive' style={{ background: "white", borderRadius: "100px" }}><img src="https://cdn-icons-png.flaticon.com/512/7693/7693316.png" alt="archives" className='NoteOptionsIcons' /></a>
 
-                <a title='Delete' onClick={() => deleteNote(noteObj.id)}><img src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png" alt="delete" className='NoteOptionsIcons' /></a>
+                <a title='Delete' style={{ background: "white", borderRadius: "100px" }} onClick={() => deleteNote(noteObj.id)}><img src="https://cdn-icons-png.flaticon.com/512/3405/3405244.png" alt="delete" className='NoteOptionsIcons' /></a>
             </div>
 
             <div id='noteDate' style={{ color: noteObj.textColor }}>{formatDate(noteObj.date.seconds)}</div>
